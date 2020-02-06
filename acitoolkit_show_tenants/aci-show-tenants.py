@@ -18,7 +18,7 @@ import acitoolkit.acitoolkit as ACI
 # Credentials and information for the DevNet ACI Simulator Always-On Sandbox
 APIC_URL = "https://sandboxapicdc.cisco.com/"
 APIC_USER = "admin"
-APIC_PASSWORD = "C1sco12345"
+APIC_PASSWORD = "ciscopsdt"
 
 def main():
     """
