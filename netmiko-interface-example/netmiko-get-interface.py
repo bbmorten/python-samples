@@ -31,27 +31,42 @@ import re
 from device_info import ios_xe1 as device # noqa
 from device_info import ios_xe2 as device2
 
+ios_xe3 = {
+             "address": "192.168.72.251",
+             "netconf_port": 22,
+             "restconf_port": 9443,
+             "ssh_port": 22,
+             "username": "admin",
+             "password": "112233on!",
+             "device_type": "cisco_ios"
+          }
+
+
 # Create a CLI command template
 show_interface_config_temp = "show running-config interface {}"
 
 # Open CLI connection to device
-with ConnectHandler(ip = device["address"],
-                    port = device["ssh_port"],
-                    username = device["username"],
-                    password = device["password"],
-                    device_type = device["device_type"]) as ch:
+with ConnectHandler(ip = device2["address"],
+                    port = device2["ssh_port"],
+                    username = device2["username"],
+                    password = device2["password"],
+                    device_type = device2["device_type"]) as ch:
 
     # Create desired CLI command and send to device
-    command = show_interface_config_temp.format("Loopback103")
+    #command = show_interface_config_temp.format("Loopback103")
+    command = show_interface_config_temp.format("GigabitEthernet6")
+
     interface = ch.send_command(command)
 
+
     # Print the raw command output to the screen
+    print(type(interface))
     print(interface)
 
     try:
         # Use regular expressions to parse the output for desired data
-        name = re.search(r'interface (.*)', interface).group(1)
-        description = re.search(r'description (.*)', interface).group(1)
+        name = re.search(r'(interface )(.*)', interface).group(2)
+        #description = re.search(r'description (.*)', interface).group(1)
         ip_info = re.search(r'ip address (.*) (.*)', interface)
         ip = ip_info.group(1)
         netmask = ip_info.group(2)
@@ -65,3 +80,12 @@ with ConnectHandler(ip = device["address"],
             )
     except Exception:
         print("There was an error, Loopback103 might not exist.")
+
+
+    command = "show version"
+
+    version = ch.send_command(command)
+
+
+    # Print the raw command output to the screen
+    print(version)
