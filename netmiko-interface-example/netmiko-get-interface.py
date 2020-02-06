@@ -29,6 +29,7 @@ from netmiko import ConnectHandler
 import re
 
 from device_info import ios_xe1 as device # noqa
+from device_info import ios_xe2 as device2
 
 # Create a CLI command template
 show_interface_config_temp = "show running-config interface {}"

@@ -41,6 +41,16 @@ ios_xe1 = {
              "device_type": "cisco_ios"
           }
 
+ios_xe2 = {
+             "address": "192.168.72.251",
+             "netconf_port": 22,
+             "restconf_port": 9443,
+             "ssh_port": 22,
+             "username": "admin",
+             "password": "112233on!",
+             "device_type": "cisco_ios"
+          }
+
 # DevNet Always-On Sandbox NX-OS
 #
 nxos1 = {
