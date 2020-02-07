@@ -33,6 +33,7 @@ def get_token(url):
 
     # Combine URL, API call and parameters variables
     url += api_call
+    #url = url + api_call
 
     response = requests.post(url, json=payload, headers=headers, verify=False).json()
 
