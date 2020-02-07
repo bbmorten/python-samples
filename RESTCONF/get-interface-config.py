@@ -33,12 +33,12 @@ import sys
 # disable warnings from SSL/TLS certificates
 requests.packages.urllib3.disable_warnings()
 
-# use the IP address or hostname of your Cat9300
-HOST = '172.26.198.63'
+HOST = 'ios-xe-mgmt.cisco.com'
+PORT = '9443'
 
 # use your user credentials to access the Cat9300
-USER = 'cisco'
-PASS = 'cisco'
+USER = 'root'
+PASS = 'D_Vay!_10&'
 
 
 # create a main() method
@@ -46,7 +46,7 @@ def main():
     """Main method that retrieves the Interface details from Cat9300 via RESTCONF."""
 
     # url string to issue GET request
-    url = "https://{h}/restconf/data/ietf-interfaces:interfaces".format(h=HOST)
+    url = "https://{h}:{p}/restconf/data/ietf-interfaces:interfaces".format(h=HOST,p=PORT)
 
     # RESTCONF media types for REST API headers
     headers = {'Content-Type': 'application/yang-data+json',
