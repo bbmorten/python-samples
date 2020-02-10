@@ -85,6 +85,9 @@ def get_url(url):
 def list_network_devices():
     return get_url("network-device")
 
+def list_topology():
+    return get_url("topology/l3/ospf")
+
 def main():
     response = list_network_devices()
     print("{0:42}{1:17}{2:12}{3:18}{4:12}{5:16}{6:15}".
@@ -100,5 +103,10 @@ def main():
                     device['platformId'],
                     device['softwareVersion'],
                     device['role'],uptime))
+    
+    response = list_topology()
+
+    print(response)
+
 
 if __name__ == '__main__': main()
